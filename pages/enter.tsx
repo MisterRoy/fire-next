@@ -4,11 +4,9 @@ import { auth, googleAuthProvider } from "../lib/firebase";
 import { UserContext } from "../lib/context";
 import { useContext, useEffect, useCallback, useState } from "react";
 
-import debounce from 'lodash.debounce';
+import debounce from "lodash.debounce";
 import { doc, getDoc, writeBatch } from "firebase/firestore";
 import { firestore } from "../lib/firebase";
-
-
 
 export default function Enter(props) {
   const { user, username } = useContext(UserContext);
@@ -18,14 +16,17 @@ export default function Enter(props) {
   // 3. user sign in, has username <SignOutButton/>
   return (
     <main>
-      {
-        user ?
-          !username ? <UsernameForm /> : <SignOutButton />
-          :
-          <SignInButton />
-      }
+      {user ? (
+        !username ? (
+          <UsernameForm />
+        ) : (
+          <SignOutButton />
+        )
+      ) : (
+        <SignInButton />
+      )}
     </main>
-  )
+  );
 }
 
 // Sign in with Google button
@@ -36,11 +37,11 @@ function SignInButton() {
     } catch (error) {
       console.log((error as Error).message);
     }
-  }
+  };
 
   return (
     <button className="btn-google" onClick={signInWithGoogle}>
-      <img src={'/google.png'} />
+      <img src={"/google.png"} />
       Sign in with Google
     </button>
   );
@@ -48,11 +49,11 @@ function SignInButton() {
 
 // Sign out button
 function SignOutButton() {
-  return <button onClick={() => signOut(auth)}>Sign Out</button>
+  return <button onClick={() => signOut(auth)}>Sign Out</button>;
 }
 
 function UsernameForm() {
-  const [formValue, setFormValue] = useState('');
+  const [formValue, setFormValue] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -79,31 +80,37 @@ function UsernameForm() {
       setLoading(true);
       setIsValid(false);
     }
-
   };
 
   // Hit the database or username match after each debounced change
   // useCallback is required for debounce to work
-  const checkUsername = useCallback(debounce(async (username: String) => {
-    if (username.length >= 3) {
-      const ref = doc(firestore, `usernames/${username}`);
-      const docSnap = await getDoc(ref);
-      console.log('Firebase read executed !', docSnap.exists());
-      setIsValid(!docSnap.exists());
-      setLoading(false);
-    }
-  }, 500), []);
+  const checkUsername = useCallback(
+    debounce(async (username: String) => {
+      if (username.length >= 3) {
+        const ref = doc(firestore, `usernames/${username}`);
+        const docSnap = await getDoc(ref);
+        console.log("Firebase read executed !", docSnap.exists());
+        setIsValid(!docSnap.exists());
+        setLoading(false);
+      }
+    }, 500),
+    []
+  );
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     // Create refs for both documents
-    const userDoc = doc(firestore, 'users', `${user.uid}`);
-    const usernameDoc = doc(firestore, 'usernames', `${formValue}`);
+    const userDoc = doc(firestore, "users", `${user.uid}`);
+    const usernameDoc = doc(firestore, "usernames", `${formValue}`);
 
     // Commit both docs together as a batch write
     const batch = writeBatch(firestore);
-    batch.set(userDoc, { username: formValue, photoURL: user.photoURL, displayName: user.displayName });
+    batch.set(userDoc, {
+      username: formValue,
+      photoURL: user.photoURL,
+      displayName: user.displayName,
+    });
     batch.set(usernameDoc, { uid: user.uid });
 
     try {
@@ -111,19 +118,25 @@ function UsernameForm() {
     } catch (e) {
       console.log((e as Error).message);
     }
-
-
-  }
-
+  };
 
   return (
     !username && (
       <section>
         <h3>Choose Username</h3>
         <form onSubmit={onSubmit}>
-          <input name="username" placeholder="username" value={formValue} onChange={onChange} />
+          <input
+            name="username"
+            placeholder="username"
+            value={formValue}
+            onChange={onChange}
+          />
 
-          <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
+          <UsernameMessage
+            username={formValue}
+            isValid={isValid}
+            loading={loading}
+          />
 
           <button type="submit" className="btn-green" disabled={!isValid}>
             Choose
@@ -143,15 +156,14 @@ function UsernameForm() {
   );
 }
 
-
 function UsernameMessage({ username, isValid, loading }) {
   if (loading) {
-    return <p>Checking...</p>
+    return <p>Checking...</p>;
   } else if (isValid) {
-    return <p className="text-success">{username} is available!</p>
+    return <p className="text-success">{username} is available!</p>;
   } else if (username && !isValid) {
-    return <p className="text-danger">That username is taken!</p>
+    return <p className="text-danger">That username is taken!</p>;
   } else {
-    return <p></p>
+    return <p></p>;
   }
 }

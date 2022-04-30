@@ -6,11 +6,9 @@ import { UserContext } from "../lib/context";
 function Navbar() {
   const { user, username } = useContext(UserContext);
 
-
   return (
     <nav className="navbar">
       <ul>
-
         <li>
           <Link href="/">
             <button className="btn-logo">FEED</button>
@@ -22,7 +20,8 @@ function Navbar() {
           <>
             <li className="push-left">
               <Link href="/admin">
-                <button className="btn-blue">Write Posts</button></Link>
+                <button className="btn-blue">Write Posts</button>
+              </Link>
             </li>
             <li>
               <Link href={`/${username}`}>
@@ -40,7 +39,6 @@ function Navbar() {
             </Link>
           </li>
         )}
-
       </ul>
     </nav>
   );
