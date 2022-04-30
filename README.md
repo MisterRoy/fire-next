@@ -2,7 +2,7 @@
 
 ## 🏁Description
 
-<div style="text-align: justify">Fire Next is a Bot-friendly and SEO-optimized Web App Built with Next.js. It was inspired by Dev.to, a social bloging platform. Authors can create content under their custom username, then publish publicly with SEO-friendly rendering, while readers can heart or like posts in realtime</div>
+<div style="text-align: justify">Fire Next is a Bot-friendly and SEO-optimized Web App Built with Next.js. It was inspired by [DEV Community 👩‍💻👨‍💻](https://dev.to/), a social bloging platform. Authors can create content under their custom username, then publish publicly with SEO-friendly rendering, while readers can heart or like posts in realtime</div>
 
 ![feed](feed.png) ![demo](demo.gif)
 
