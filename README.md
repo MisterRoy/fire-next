@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Fire Next</h1>
 
-## Getting Started
+## 🏁Description
 
-First, run the development server:
+<div style="text-align: justify">Fire Next is a Bot-friendly and SEO-optimized Web App Built with Next.js. It was inspired by Dev.to, a social bloging platform. Authors can create content under their custom username, then publish publicly with SEO-friendly rendering, while readers can heart or like posts in realtime</div>
 
-```bash
-npm run dev
-# or
-yarn dev
+![feed](feed.png) ![demo](demo.gif)
+
+## 📺Live Demo
+
+<p>You can give it a try by heading to the following URL</p>
+
+### https://fire-next-livid.vercel.app/
+
+## 💫Features
+
+- 👨‍🎤 Custom Firebase usernames
+- 📰 Bot-friendly content (SEO)
+- 🦾 SSR (Server-Side Rendering), SSG (Static Site Generation), and ISR (Incremental Static Regeneration) techniques
+- 🔥 Firestore realtime CRUD and data modeling
+- ⚛️ Reactive forms with react-hook-form
+- 📂 Image file uploads
+- 💞 Realtime hearts / likes
+- 🚀 Security & Deployment
+
+## ⛏️Built With
+
+- [React.js](https://dart.dev/) - A JavaScript library for building user interfaces
+- [Next.js](https://flutter.dev/) - The React Framework
+  for Production
+- [Firebase](https://firebase.google.com/) - A BaaS backed by Google
+
+## ⛓️Prerequisites
+
+- [Node.js](https://nodejs.org/) v16.14.0 or higher
+
+## 🚀Run
+
+#### Clone repository
+
+```
+git clone https://github.com/MisterRoy/fire-next.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Install dependencies
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+#### Launch
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm run dev
+```
 
-## Learn More
+## 👨🏾‍💻Author
 
-To learn more about Next.js, take a look at the following resources:
+- [Mr. Roy](https://github.com/MisterRoy)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👋🏿Acknowledgments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+I built this app thanks to Jeff's [awesome course](https://fireship.io/courses/react-next-firebase/).
+You should definitely check out his [YouTube Channel](https://www.youtube.com/c/Fireship).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Jeff Delaney](https://github.com/codediodeio)
+- React team at Meta (former Facebook)
+- All authors of the differents npm packages used in this project
